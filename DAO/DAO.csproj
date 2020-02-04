@@ -52,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EstacionamentoDbContext.cs" />
+    <Compile Include="Mappings\ClienteMapConfig.cs" />
+    <Compile Include="Mappings\MovimentacaoMapConfig.cs" />
+    <Compile Include="Mappings\VagaMapConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
