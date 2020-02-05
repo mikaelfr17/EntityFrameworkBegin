@@ -29,10 +29,13 @@ namespace DAO
         {
             //Remove a convenção que pluraliza em inglês o nome das tabelas.
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             //adiciona as configurações locais no DbContext
             modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
             //Adição de uma configuração global que sobrescreve a convenção padrão da string e a faz ser VARCHAR NOT NULL
             modelBuilder.Properties().Where(c => c.PropertyType == typeof(string)).Configure(c => c.IsRequired().IsUnicode(false));
+
+            modelBuilder.Properties().Where(c => c.PropertyType == typeof(DateTime)).Configure(c => c.HasColumnType("datetime2"));
             //Irá comparar as suas entidades (que estão encapsuladas nos DbSet<T> acima)
             //com a estrutura do banco. Se a base não existir, o EF irá criar. Se a base existir,
             //mas estiver diferente (o banco com uma ou mais diferença(s) de coluna(s)), o EF

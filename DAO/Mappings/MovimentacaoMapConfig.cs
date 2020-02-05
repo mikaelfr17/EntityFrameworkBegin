@@ -15,6 +15,8 @@ namespace DAO.Mappings
             this.ToTable("MOVIMENTACOES");
             this.Property(c => c.Placa).HasMaxLength(7);
             this.Property(c => c.Modelo).HasMaxLength(40);
+
+            this.HasRequired(c => c.Vaga).WithMany(c => c.Movimentacoes).WillCascadeOnDelete(false);
         }
     }
 }
